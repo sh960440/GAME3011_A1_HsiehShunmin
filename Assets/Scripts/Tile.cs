@@ -32,32 +32,16 @@ public class Tile : MonoBehaviour
         {
             if (GameManager.Instance().extractionsRemaining > 1)
             {
-                switch (Value)
-                {
-                    case TileValue.MIN:
-                        GameManager.Instance().collectedResources += 500;
-                        break;
-                    case TileValue.QUARTER:
-                        GameManager.Instance().collectedResources += 1000;
-                        Value = TileValue.MIN;
-                        break;
-                    case TileValue.HALF:
-                        GameManager.Instance().collectedResources += 2000;
-                        Value = TileValue.MIN;
-                        break;
-                    case TileValue.MAX:
-                        GameManager.Instance().collectedResources += 4000;
-                        Value = TileValue.MIN;
-                        break;
-                }
-
+                ExtractResource();
                 spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/Min");
                 tileManager.resourceCounter.text = "Collected resources: " + GameManager.Instance().collectedResources;
                 GameManager.Instance().extractionsRemaining--;
             }
             else if (GameManager.Instance().extractionsRemaining == 1)
             {
+                ExtractResource();
                 spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/Min");
+                tileManager.toggleButtonText.text = "Restart";
                 tileManager.messageBar.text = "GAME OVER";
                 tileManager.resourceCounter.text = "Total resources: " + GameManager.Instance().collectedResources;
                 GameManager.Instance().extractionsRemaining--;
@@ -94,6 +78,28 @@ public class Tile : MonoBehaviour
 
                 GameManager.Instance().scansRemaining--;
             }
+        }
+    }
+
+    void ExtractResource()
+    {
+        switch (Value)
+        {
+            case TileValue.MIN:
+                GameManager.Instance().collectedResources += 500;
+                break;
+            case TileValue.QUARTER:
+                GameManager.Instance().collectedResources += 1000;
+                Value = TileValue.MIN;
+                break;
+            case TileValue.HALF:
+                GameManager.Instance().collectedResources += 2000;
+                Value = TileValue.MIN;
+                break;
+            case TileValue.MAX:
+                GameManager.Instance().collectedResources += 4000;
+                Value = TileValue.MIN;
+                break;
         }
     }
 }

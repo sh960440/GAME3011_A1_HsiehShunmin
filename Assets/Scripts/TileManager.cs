@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class TileManager : MonoBehaviour
@@ -15,8 +16,7 @@ public class TileManager : MonoBehaviour
     private int[] maxValueYs;
 
 
-    [SerializeField]
-    TMP_Text toggleButtonText;
+    public TMP_Text toggleButtonText;
     public TMP_Text messageBar;
     public TMP_Text resourceCounter;
     public bool isExtractMode = true;
@@ -116,6 +116,15 @@ public class TileManager : MonoBehaviour
         isExtractMode = isExtractMode == true ? false : true;
         toggleButtonText.text = isExtractMode == true ? "Extract Mode" : "Scan Mode";
         if (GameManager.Instance().extractionsRemaining > 0)
+        {
             messageBar.text = isExtractMode == true ? "Click a tile to gather resources" : "Click a tile to scan";
+        }        
+        else
+        {
+            GameManager.Instance().collectedResources = 0;
+            GameManager.Instance().scansRemaining = 6;
+            GameManager.Instance().extractionsRemaining = 3;
+            SceneManager.LoadScene("TileGame");
+        }
     }
 }
