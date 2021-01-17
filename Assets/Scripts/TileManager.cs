@@ -31,6 +31,7 @@ public class TileManager : MonoBehaviour
             {
                 Vector3 spawnPosition = new Vector3(startXPosition + i * 0.5f, startYPosition - j * 0.5f, transform.position.z);
                 tiles[i,j] = Instantiate(tilePrafab, spawnPosition, transform.rotation);
+                tiles[i,j].GetComponent<Tile>().positionIndex = new int[2] {i, j};
             }
         }
 
@@ -125,6 +126,30 @@ public class TileManager : MonoBehaviour
             GameManager.Instance().scansRemaining = 6;
             GameManager.Instance().extractionsRemaining = 3;
             SceneManager.LoadScene("TileGame");
+        }
+    }
+
+    public void DisplayTiles(int[] center)
+    {
+        for (int i = -1; i < 2; i++)
+        {
+            for (int j = -1; j < 2; j++)
+            {
+                tiles[center[0] + i, center[1] + j].GetComponent<Tile>().DisplayTile();
+            }
+        }
+    }
+
+    public void DegradeTiles(int[] center)
+    {
+        for (int i = -2; i < 3; i++)
+        {
+            for (int j = -2; j < 3; j++)
+            {
+                tiles[center[0] + i, center[1] + j].GetComponent<Tile>().Degrade();
+                if (tiles[center[0] + i, center[1] + j].GetComponent<Tile>().isHidden == false)
+                    tiles[center[0] + i, center[1] + j].GetComponent<Tile>().DisplayTile();
+            }
         }
     }
 }
