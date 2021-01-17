@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public enum TileValue
 {
@@ -22,26 +21,6 @@ public class Tile : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-/**/
-        switch (Value)
-        {
-            case TileValue.MIN:
-                var minTileSprite = Resources.Load<Sprite>("Sprites/Min");
-                spriteRenderer.sprite = minTileSprite;
-                break;
-            case TileValue.QUARTER:
-                var quarterTileSprite = Resources.Load<Sprite>("Sprites/Quarter");
-                spriteRenderer.sprite = quarterTileSprite;
-                break;
-            case TileValue.HALF:
-                var halfTileSprite = Resources.Load<Sprite>("Sprites/Half");
-                spriteRenderer.sprite = halfTileSprite;
-                break;
-            case TileValue.MAX:
-                var maxTileSprite = Resources.Load<Sprite>("Sprites/Max");
-                spriteRenderer.sprite = maxTileSprite;
-                break;
-        }/**/
     }
 
     // Update is called once per frame
