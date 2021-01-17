@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Value: 3
   isHidden: 1
+  positionIndex: ffffffffffffffff
 --- !u!61 &567609979
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -30,15 +30,12 @@ public class Tile : MonoBehaviour
 
     void OnMouseDown()
     {
-        //Debug.Log("Tile position: (" + tileManager.GetTilePosition(this)[0] + ", " + tileManager.GetTilePosition(this)[1] + ")");
-        //Debug.Log("Tile position: (" + positionIndex[0] + ", " + positionIndex[1] + ")");
-
         if (tileManager.isExtractMode == true)
         {
             if (GameManager.Instance().extractionsRemaining > 1)
             {
                 ExtractResource();
-                spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/Min");
+                spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/OreMin");
                 isHidden = false;
                 tileManager.resourceCounter.text = "Collected resources: " + GameManager.Instance().collectedResources;
                 GameManager.Instance().extractionsRemaining--;
@@ -47,17 +44,17 @@ public class Tile : MonoBehaviour
             else if (GameManager.Instance().extractionsRemaining == 1)
             {
                 ExtractResource();
-                spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/Min");
+                spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/OreMin");
                 isHidden = false;
                 tileManager.toggleButtonText.text = "Restart";
-                tileManager.messageBar.text = "GAME OVER";
+                tileManager.promptMessage.text = "GAME OVER";
                 tileManager.resourceCounter.text = "Total resources: " + GameManager.Instance().collectedResources;
                 GameManager.Instance().extractionsRemaining--;
                 tileManager.DegradeTiles(positionIndex);
             }
             else
             {
-                tileManager.messageBar.text = "GAME OVER";
+                tileManager.promptMessage.text = "GAME OVER";
                 tileManager.resourceCounter.text = "Total resources: " + GameManager.Instance().collectedResources;
             }
         }
@@ -70,6 +67,7 @@ public class Tile : MonoBehaviour
                 GameManager.Instance().scansRemaining--;
             }
         }
+        tileManager.messageBar.text = "[Scan: " + GameManager.Instance().scansRemaining + "/6]   [Extract: " + GameManager.Instance().extractionsRemaining + "/3]";
     }
 
     void ExtractResource()
@@ -99,19 +97,19 @@ public class Tile : MonoBehaviour
         switch (Value)
         {
             case TileValue.MIN:
-                var minTileSprite = Resources.Load<Sprite>("Sprites/Min");
+                var minTileSprite = Resources.Load<Sprite>("Sprites/OreMin");
                 spriteRenderer.sprite = minTileSprite;
                 break;
             case TileValue.QUARTER:
-                var quarterTileSprite = Resources.Load<Sprite>("Sprites/Quarter");
+                var quarterTileSprite = Resources.Load<Sprite>("Sprites/OreQuarter");
                 spriteRenderer.sprite = quarterTileSprite;
                 break;
             case TileValue.HALF:
-                var halfTileSprite = Resources.Load<Sprite>("Sprites/Half");
+                var halfTileSprite = Resources.Load<Sprite>("Sprites/OreHalf");
                 spriteRenderer.sprite = halfTileSprite;
                 break;
             case TileValue.MAX:
-                var maxTileSprite = Resources.Load<Sprite>("Sprites/Max");
+                var maxTileSprite = Resources.Load<Sprite>("Sprites/OreMax");
                 spriteRenderer.sprite = maxTileSprite;
                 break;
         }

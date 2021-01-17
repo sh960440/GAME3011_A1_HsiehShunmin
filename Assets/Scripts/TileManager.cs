@@ -17,8 +17,10 @@ public class TileManager : MonoBehaviour
 
 
     public TMP_Text toggleButtonText;
+    public TMP_Text promptMessage;
     public TMP_Text messageBar;
     public TMP_Text resourceCounter;
+
     public bool isExtractMode = true;
 
 
@@ -118,7 +120,7 @@ public class TileManager : MonoBehaviour
         toggleButtonText.text = isExtractMode == true ? "Extract Mode" : "Scan Mode";
         if (GameManager.Instance().extractionsRemaining > 0)
         {
-            messageBar.text = isExtractMode == true ? "Click a tile to gather resources" : "Click a tile to scan";
+            promptMessage.text = isExtractMode == true ? "Click a tile to gather resources" : "Click a tile to scan";
         }        
         else
         {
