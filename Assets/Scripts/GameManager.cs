@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+[System.Serializable]
+public class GameManager
 {
     private static GameManager instance = null;
     private GameManager() { }
@@ -14,18 +15,8 @@ public class GameManager : MonoBehaviour
         }
         return instance;
     }
-
-    public bool isExtractMode = true;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
+    public int collectedResources = 0;
+    public int scansRemaining = 6;
+    public int extractionsRemaining = 3;
 }
