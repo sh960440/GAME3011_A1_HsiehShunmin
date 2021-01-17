@@ -3,9 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum TileValue
+{
+    MAX,
+    HALF,
+    QUARTER,
+    MIN,
+}
+
 public class Tile : MonoBehaviour
 {
-    public int Value = 1;
+    public TileValue Value = TileValue.MIN;
     public bool isHidden = true;
 
     private SpriteRenderer spriteRenderer;
@@ -14,6 +22,26 @@ public class Tile : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+/**/
+        switch (Value)
+        {
+            case TileValue.MIN:
+                var minTileSprite = Resources.Load<Sprite>("Sprites/Min");
+                spriteRenderer.sprite = minTileSprite;
+                break;
+            case TileValue.QUARTER:
+                var quarterTileSprite = Resources.Load<Sprite>("Sprites/Quarter");
+                spriteRenderer.sprite = quarterTileSprite;
+                break;
+            case TileValue.HALF:
+                var halfTileSprite = Resources.Load<Sprite>("Sprites/Half");
+                spriteRenderer.sprite = halfTileSprite;
+                break;
+            case TileValue.MAX:
+                var maxTileSprite = Resources.Load<Sprite>("Sprites/Max");
+                spriteRenderer.sprite = maxTileSprite;
+                break;
+        }/**/
     }
 
     // Update is called once per frame
@@ -24,8 +52,24 @@ public class Tile : MonoBehaviour
 
     void OnMouseDown()
     {
-        Debug.Log("Clicked!!");
-        var tileSprite = Resources.Load<Sprite>("Sprites/Max");
-        spriteRenderer.sprite = tileSprite;
+        switch (Value)
+        {
+            case TileValue.MIN:
+                var minTileSprite = Resources.Load<Sprite>("Sprites/Min");
+                spriteRenderer.sprite = minTileSprite;
+                break;
+            case TileValue.QUARTER:
+                var quarterTileSprite = Resources.Load<Sprite>("Sprites/Quarter");
+                spriteRenderer.sprite = quarterTileSprite;
+                break;
+            case TileValue.HALF:
+                var halfTileSprite = Resources.Load<Sprite>("Sprites/Half");
+                spriteRenderer.sprite = halfTileSprite;
+                break;
+            case TileValue.MAX:
+                var maxTileSprite = Resources.Load<Sprite>("Sprites/Max");
+                spriteRenderer.sprite = maxTileSprite;
+                break;
+        } 
     }
 }

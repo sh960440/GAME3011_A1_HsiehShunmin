@@ -237,6 +237,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePrafab: {fileID: 9217165882388552030, guid: 9d2b3b14c48b0134391c8636d906f82d, type: 3}
   size: 20
+  maxValuePointAmount: 8
+  startXPosition: -4.75
+  startYPosition: 4.75
 --- !u!4 &1184409306
 Transform:
   m_ObjectHideFlags: 0
@@ -260,11 +263,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4688010799145514286, guid: 9d2b3b14c48b0134391c8636d906f82d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.37
+      value: -7.02
       objectReference: {fileID: 0}
     - target: {fileID: 4688010799145514286, guid: 9d2b3b14c48b0134391c8636d906f82d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.59
+      value: 3.74
       objectReference: {fileID: 0}
     - target: {fileID: 4688010799145514286, guid: 9d2b3b14c48b0134391c8636d906f82d, type: 3}
       propertyPath: m_LocalPosition.z
